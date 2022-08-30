@@ -1,7 +1,7 @@
 <template>
   <div>
     <ul v-for="(movie, index) in movies" :key="index">
-        <li></li>
+        <li>
             <h4>{{movie.title}}</h4>
             <h5>{{movie.original_title}}</h5>
             <h5>{{movie.original_language}}</h5>
