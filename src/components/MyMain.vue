@@ -64,6 +64,10 @@ export default {
 
 @import '~@fortawesome/fontawesome-free/css/all.css';
 
+    body {
+        background-color: #434343;
+    }
+
     .w-20 {
         width: 20px;
     }
@@ -75,10 +79,10 @@ export default {
         justify-content: center;
         align-items: center;
 
-        .card {
+        .flip-card {
             width: 342px;
-            height: 800px;
-            padding: 10px;
+            height: 513px;
+            padding: 40px;
 
             .poster-img {
                 height: 513px;
@@ -102,7 +106,7 @@ export default {
                 background-color: #ccc;
 
                 img {
-                    height: 60%;
+                    height: 40%;
                 }
     }
         }

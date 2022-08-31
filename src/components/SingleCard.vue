@@ -1,21 +1,32 @@
 <template>
-        <div class="card">
-            <div class="no-poster" v-if="cardData.poster_path == null">
-                <img class="no-poster-img" src="../assets/images/noposter.svg" alt="">
+    <div class="flip-card">
+        <div class="flip-card-inner">
+            <div class="flip-card-front">
+                <div class="no-poster" v-if="cardData.poster_path == null">
+                    <span>{{(cardData.hasOwnProperty('title'))? cardData.title : cardData.name}}</span>
+                    <img class="no-poster-img" src="../assets/images/noposter.svg" alt="">
+                 </div>
+                <img  class="poster-img" v-else :src="posterURL + cardData.poster_path" alt="">
             </div>
-            <img  class="poster-img" v-else :src="posterURL + cardData.poster_path" alt="">
-            <h4>{{(cardData.hasOwnProperty('title'))? cardData.title : cardData.name}}</h4>
-            <h5>{{(cardData.hasOwnProperty('original_title'))? cardData.original_title : cardData.original_name}}</h5>
-            <div class="lang-card" v-if="cardData.original_language == 'en'">
-                <img  class="w-20" src="../assets/images/gb.svg" alt="">
+
+            <div class="flip-card-back">
+                <h4>{{(cardData.hasOwnProperty('title'))? cardData.title : cardData.name}}</h4>
+                <h5>{{(cardData.hasOwnProperty('original_title'))? cardData.original_title : cardData.original_name}}</h5>
+                <div class="lang-card" v-if="cardData.original_language == 'en'">
+                    <img  class="w-20" src="../assets/images/gb.svg" alt="">
+                </div>
+                <div class="lang-card" v-else-if="cardData.original_language == 'it'">
+                    <img class="w-20" src="../assets/images/it.svg" alt="">
+                </div>
+                <h5 class="lang-card" v-else>{{cardData.original_language}}</h5>
+                <h5 v-html="convertRating(cardData.vote_average)"></h5>
+                <img src="" alt="">
             </div>
-            <div class="lang-card" v-else-if="cardData.original_language == 'it'">
-                <img class="w-20" src="../assets/images/it.svg" alt="">
-            </div>
-            <h5 class="lang-card" v-else>{{cardData.original_language}}</h5>
-            <h5 v-html="convertRating(cardData.vote_average)"></h5>
-            <img src="" alt="">
+            
+            
         </div>
+    </div>
+        
   
 </template>
 
@@ -52,8 +63,55 @@ export default {
 
 <style lang="scss">
 
-
 @import '~@fortawesome/fontawesome-free/css/all.css';
 
+.no-poster {
+    position: relative;
+    span {
+        position: absolute;
+        top: 80px;
+        left: 50%;
+        font-size: 30px;
+        font-weight: bold;
+        transform: translate(-50%, -50%);
+    }
+
+}
+
+.flip-card {
+    background-color: transparent;
+    perspective: 1000px;
+}
+.flip-card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    transition: transform 0.8s;
+    transform-style: preserve-3d;
+}
+
+.flip-card:hover .flip-card-inner {
+    transform: rotateY(180deg);
+}
+
+.flip-card-front, .flip-card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+}
+
+.flip-card-front {
+    background-color: transparent;
+    color: black;
+}
+
+.flip-card-back {
+    background-color: #2980b9;
+    color: white;
+    transform: rotateY(180deg);
+}
     
 </style>
