@@ -117,11 +117,11 @@ export default {
     position: relative;
     span {
         position: absolute;
-        top: 80px;
-        left: 50%;
-        font-size: 30px;
+        top: 10px;
+        text-align: center;
+        font-size: 22px;
         font-weight: bold;
-        transform: translate(-50%, -50%);
+        padding: 0 5px;
     }
 
 }
