@@ -1,44 +1,34 @@
 <template>
-  <main>
-    <div v-if="!movies.length == 0" class="wrap">
-        <h1 class="section-title">MOVIES</h1>
-        <div id="movies-container">
-            <SingleCard v-for="(movie, index) in movies" :key="index" :cardData="movie" />
+        <div class="card">
+            <div class="no-poster" v-if="cardData.poster_path == null">
+                <img class="no-poster-img" src="../assets/images/noposter.svg" alt="">
+            </div>
+            <img  class="poster-img" v-else :src="posterURL + cardData.poster_path" alt="">
+            <h4>{{(cardData.hasOwnProperty('title'))? cardData.title : cardData.name}}</h4>
+            <h5>{{(cardData.hasOwnProperty('original_title'))? cardData.original_title : cardData.original_name}}</h5>
+            <div class="lang-card" v-if="cardData.original_language == 'en'">
+                <img  class="w-20" src="../assets/images/gb.svg" alt="">
+            </div>
+            <div class="lang-card" v-else-if="cardData.original_language == 'it'">
+                <img class="w-20" src="../assets/images/it.svg" alt="">
+            </div>
+            <h5 class="lang-card" v-else>{{cardData.original_language}}</h5>
+            <h5 v-html="convertRating(cardData.vote_average)"></h5>
+            <img src="" alt="">
         </div>
-    </div>
-    
-    
-    <div v-if="!movies.length == 0" class="wrap">
-        <h1 class="section-title">TV SERIES</h1>
-        <div id="tvseries-container">
-            <SingleCard v-for="(tvSeries, index) in tvSeries" :key="index" :cardData="tvSeries" />
-        </div>
-    </div>
-    
-    
-
-  </main>
+  
 </template>
 
 <script>
-
-import SingleCard from './SingleCard.vue';
-
 export default {
-
-
-    name: 'MyMain',
+    name: 'SingleCard',
+    props: {
+        cardData: Object,
+    },
     data() {
         return {
             posterURL: 'https://image.tmdb.org/t/p/w342'
         }
-    },
-    components: {
-        SingleCard,
-    },
-    props: {
-        movies: Array,
-        tvSeries: Array
     },
     methods: {
         convertRating(rating) {
@@ -56,11 +46,12 @@ export default {
             starsRating = starsRating.join('');
             return starsRating;
         }
-    }
+    },
 }
 </script>
 
 <style lang="scss">
+
 
 @import '~@fortawesome/fontawesome-free/css/all.css';
 
