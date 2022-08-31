@@ -10,8 +10,8 @@
             </div>
 
             <div class="flip-card-back">
-                <h1>Titolo: {{(cardData.hasOwnProperty('title'))? cardData.title : cardData.name}}</h1>
-                <h3>Titolo originale: {{(cardData.hasOwnProperty('original_title'))? cardData.original_title : cardData.original_name}}</h3>
+                <div class="title"><b>Titolo: </b>{{(cardData.hasOwnProperty('title'))? cardData.title : cardData.name}}</div>
+                <div class="original-title"><b>Titolo originale: </b>{{(cardData.hasOwnProperty('original_title'))? cardData.original_title : cardData.original_name}}</div>
                 <div class="lang-card">
                     <img class="w-30" :src="flagEndpoint + convertLangToFlag(cardData.original_language)" alt=""></div>
                 <span v-html="convertRating(cardData.vote_average)"></span>
@@ -134,7 +134,7 @@ export default {
     position: relative;
     width: 100%;
     height: 100%;
-    text-align: center;
+    text-align: left;
     transition: transform 0.8s;
     transform-style: preserve-3d;
 }
@@ -158,15 +158,24 @@ export default {
 
 .flip-card-back {
     box-sizing: border-box;
-    padding: 10px;
+    padding: 15px;
     background-color: black;
     color: white;
     transform: rotateY(180deg);
     overflow: auto;
 
     p {
-        font-size: 18px;
+        font-size: 1rem;
+        text-align: left;
     }
+}
+
+.title {
+    font-size: 20px;
+}
+
+.original-title {
+    margin: 15px 0;
 }
     
 </style>

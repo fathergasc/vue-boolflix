@@ -79,24 +79,26 @@ export default {
     }
 
     #movies-container, #tvseries-container {
-        
+        max-width: 1450px;
+        margin: 0 auto;
         display: flex;
         flex-wrap: wrap;
-        justify-content: center;
+        justify-content: start;
         align-items: center;
 
         .flip-card {
-            width: 342px;
-            height: 513px;
-            padding: 40px;
+            width: 250px;
+            height: 375px;
+            padding: 20px;
 
             .poster-img {
-                height: 513px;
-                width: 342px;
+                height: 375px;
+                width: 250px;
             }
 
             .no-poster-img {
-                height: 513px;
+                width: 250px;
+                height: 375px;
             }
             
             .lang-card {
@@ -106,8 +108,8 @@ export default {
             }
 
             .no-poster {
-                width: 342px;
-                height: 513px;
+                width: 250px;
+                height: 375px;
                 display: flex;
                 justify-content: center;
                 align-items: center;
@@ -122,7 +124,7 @@ export default {
 
     i {
         color: gold;
-        font-size: 25px;
+        font-size: 20px;
     }
     
 
