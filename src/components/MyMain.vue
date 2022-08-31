@@ -74,8 +74,8 @@ export default {
         padding-top: 80px;
     }
 
-    .w-20 {
-        width: 20px;
+    .w-30 {
+        width: 30px;
     }
 
     #movies-container, #tvseries-container {
