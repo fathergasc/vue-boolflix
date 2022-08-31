@@ -1,8 +1,8 @@
 <template>
   <main>
-    <h1>MOVIES</h1>
-    <div id="movies-container">
-        
+    
+    <div v-if="!movies.length == 0" id="movies-container">
+        <h1 >MOVIES</h1>
         <ul class="list" v-for="(movie, index) in movies" :key="index">
             <li>
                 <div class="no-poster" v-if="movie.poster_path == null">
@@ -18,14 +18,14 @@
                     <img class="w-20" src="../assets/images/it.svg" alt="">
                 </div>
                 <h5 v-else>{{movie.original_language}}</h5>
-                <h5>{{movie.vote_average}}</h5>
+                <h5>{{convertRating(movie.vote_average)}}</h5>
                 <img src="" alt="">
             </li>
         </ul>
     </div>
-    <h1>TV SERIES</h1>
-    <div id="tvseries-container">
-        
+    
+    <div v-if="!movies.length == 0" id="tvseries-container">
+        <h1>TV SERIES</h1>
         <ul class="list" v-for="(tvseries, index) in tvSeries" :key="index">
             <li>
                 <div class="no-poster" v-if="tvseries.poster_path == null">
@@ -41,7 +41,7 @@
                     <img class="w-20" src="../assets/images/it.svg" alt="">
                 </div>
                 <h5 v-else>{{tvseries.original_language}}</h5>
-                <h5>{{tvseries.vote_average}}</h5>
+                <h5>{{convertRating(tvseries.vote_average)}}</h5>
                 <img src="" alt="">
             </li>
         </ul>
@@ -69,11 +69,29 @@ export default {
         tvSeries: Array
     },
     methods: {
+        convertRating(rating) {
+            rating = Math.round(rating * 2) / 2;
+            let starsRating = [];
+
+            for (var i = rating; i >= 1; i--) {
+                starsRating.push('<i class="fa-solid fa-star"></i>');
+                if (i == .5) starsRating.push('<i class="fa-regular fa-star-half-stroke"></i>');
+            }
+            for (let i = (5 - rating); i >= 1; i--){
+            starsRating.push('<i class="fa-regular fa-star"></i>');
+            }
+
+            starsRating = starsRating.join('');
+            return starsRating;
+        }
     }
 }
 </script>
 
 <style lang="scss">
+
+@import '~@fortawesome/fontawesome-free/css/all.css';
+
     .w-20 {
         width: 20px;
     }
