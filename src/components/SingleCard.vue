@@ -18,7 +18,7 @@
                 <div class="lang-card" v-else-if="cardData.original_language == 'it'">
                     <img class="w-20" src="../assets/images/it.svg" alt="">
                 </div>
-                <span class="lang-card" v-else>{{cardData.original_language}}</span>
+                <div class="lang-card" v-else>{{cardData.original_language}}</div>
                 <span v-html="convertRating(cardData.vote_average)"></span>
                 <p>{{cardData.overview}}</p>
             </div>

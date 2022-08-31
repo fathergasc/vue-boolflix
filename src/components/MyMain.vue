@@ -101,6 +101,8 @@ export default {
             
             .lang-card {
                 height: 30px;
+                display: block;
+                text-transform: uppercase;
             }
 
             .no-poster {
@@ -137,6 +139,7 @@ export default {
         background-color: white;
         margin: 20px 0;
     }
+
 
     
 </style>
