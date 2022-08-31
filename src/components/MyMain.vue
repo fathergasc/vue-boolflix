@@ -1,15 +1,17 @@
 <template>
   <main>
     <div v-if="!movies.length == 0" class="wrap">
-        <h1 class="section-title">MOVIES</h1>
+        <h1 class="section-title">Film</h1>
+        <div class="separator"></div>
         <div id="movies-container">
             <SingleCard v-for="(movie, index) in movies" :key="index" :cardData="movie" />
         </div>
     </div>
     
     
-    <div v-if="!movies.length == 0" class="wrap">
-        <h1 class="section-title">TV SERIES</h1>
+    <div v-if="!tvSeries.length == 0" class="wrap">
+        <h1 class="section-title">Serie TV</h1>
+        <div class="separator"></div>
         <div id="tvseries-container">
             <SingleCard v-for="(tvSeries, index) in tvSeries" :key="index" :cardData="tvSeries" />
         </div>
@@ -68,6 +70,10 @@ export default {
         background-color: #434343;
     }
 
+    main {
+        padding-top: 80px;
+    }
+
     .w-20 {
         width: 20px;
     }
@@ -112,12 +118,24 @@ export default {
         }
     }
 
-    
+    i {
+        color: gold;
+        font-size: 25px;
+    }
     
 
     .section-title {
         text-align: center;
         margin-bottom: 20px;
+        color: white;
+
+    }
+
+    .separator {
+        width: 100%;
+        height: 3px;
+        background-color: white;
+        margin: 20px 0;
     }
 
     

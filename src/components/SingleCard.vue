@@ -10,17 +10,17 @@
             </div>
 
             <div class="flip-card-back">
-                <h4>{{(cardData.hasOwnProperty('title'))? cardData.title : cardData.name}}</h4>
-                <h5>{{(cardData.hasOwnProperty('original_title'))? cardData.original_title : cardData.original_name}}</h5>
+                <h1>Titolo: {{(cardData.hasOwnProperty('title'))? cardData.title : cardData.name}}</h1>
+                <h3>Titolo originale: {{(cardData.hasOwnProperty('original_title'))? cardData.original_title : cardData.original_name}}</h3>
                 <div class="lang-card" v-if="cardData.original_language == 'en'">
                     <img  class="w-20" src="../assets/images/gb.svg" alt="">
                 </div>
                 <div class="lang-card" v-else-if="cardData.original_language == 'it'">
                     <img class="w-20" src="../assets/images/it.svg" alt="">
                 </div>
-                <h5 class="lang-card" v-else>{{cardData.original_language}}</h5>
-                <h5 v-html="convertRating(cardData.vote_average)"></h5>
-                <img src="" alt="">
+                <span class="lang-card" v-else>{{cardData.original_language}}</span>
+                <span v-html="convertRating(cardData.vote_average)"></span>
+                <p>{{cardData.overview}}</p>
             </div>
             
             
@@ -109,9 +109,15 @@ export default {
 }
 
 .flip-card-back {
-    background-color: #2980b9;
+    padding: 10px;
+    background-color: black;
     color: white;
     transform: rotateY(180deg);
+    overflow: auto;
+
+    p {
+        font-size: 18px;
+    }
 }
     
 </style>
