@@ -1,7 +1,7 @@
 <template>
   <header>
-    <input type="text" v-model="search">
-    <button @click="emitSearch">Cerca</button>
+    <input type="text" v-model="search" @keyup.enter="emitSearch">
+    <button @click="emitSearch" >Cerca</button>
   </header>
 </template>
 

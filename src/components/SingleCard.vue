@@ -55,57 +55,5 @@ export default {
 
 @import '~@fortawesome/fontawesome-free/css/all.css';
 
-    .w-20 {
-        width: 20px;
-    }
-
-    #movies-container, #tvseries-container {
-        
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-        align-items: center;
-
-        .card {
-            width: 342px;
-            height: 800px;
-            padding: 10px;
-
-            .poster-img {
-                height: 513px;
-                width: 342px;
-            }
-
-            .no-poster-img {
-                height: 513px;
-            }
-            
-            .lang-card {
-                height: 30px;
-            }
-
-            .no-poster {
-                width: 342px;
-                height: 513px;
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                background-color: #ccc;
-
-                img {
-                    height: 60%;
-                }
-    }
-        }
-    }
-
-    
-    
-
-    .section-title {
-        text-align: center;
-        margin-bottom: 20px;
-    }
-
     
 </style>
