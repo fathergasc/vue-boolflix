@@ -18,7 +18,7 @@
                     <img class="w-20" src="../assets/images/it.svg" alt="">
                 </div>
                 <h5 class="lang-card" v-else>{{movie.original_language}}</h5>
-                <h5>{{convertRating(movie.vote_average)}}</h5>
+                <h5 v-html="convertRating(movie.vote_average)"></h5>
                 <img src="" alt="">
             </div>
         </div>
@@ -45,7 +45,7 @@
                     <img class="w-20" src="../assets/images/it.svg" alt="">
                 </div>
                 <h5 class="lang-card" v-else>{{tvseries.original_language}}</h5>
-                <h5>{{convertRating(tvseries.vote_average)}}</h5>
+                <h5 v-html="convertRating(tvseries.vote_average)"></h5>
                 <img src="" alt="">
             </div>
         </div>
@@ -74,16 +74,16 @@ export default {
     },
     methods: {
         convertRating(rating) {
-            rating = Math.round(rating * 2) / 2;
+            rating = Math.round(rating) / 2;
             let starsRating = [];
 
-            for (var i = rating; i >= 1; i--) {
+            for (var i = rating; i >= 1; i--) 
                 starsRating.push('<i class="fa-solid fa-star"></i>');
                 if (i == .5) starsRating.push('<i class="fa-regular fa-star-half-stroke"></i>');
-            }
-            for (let i = (5 - rating); i >= 1; i--){
+            
+            for (let i = (5 - rating); i >= 1; i--)
             starsRating.push('<i class="fa-regular fa-star"></i>');
-            }
+            
 
             starsRating = starsRating.join('');
             return starsRating;
@@ -116,9 +116,10 @@ export default {
             height: 800px;
             padding: 10px;
 
-            /*.poster-img {
+            .poster-img {
                 height: 513px;
-            }*/
+                width: 342px;
+            }
 
             .no-poster-img {
                 height: 513px;
