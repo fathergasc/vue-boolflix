@@ -1,59 +1,63 @@
 <template>
   <main>
-    
-    <div v-if="!movies.length == 0" id="movies-container">
-        <h1 >MOVIES</h1>
-        <ul class="list" v-for="(movie, index) in movies" :key="index">
-            <li>
+    <div v-if="!movies.length == 0" class="wrap">
+        <h1 class="section-title">MOVIES</h1>
+        <div  id="movies-container">
+        <div class="list" v-for="(movie, index) in movies" :key="index">
+            <div class="card">
                 <div class="no-poster" v-if="movie.poster_path == null">
-                    <img src="../assets/images/noposter.svg" alt="">
+                    <img class="no-poster-img" src="../assets/images/noposter.svg" alt="">
                 </div>
-                <img v-else :src="posterURL + movie.poster_path" alt="">
+                <img  class="poster-img" v-else :src="posterURL + movie.poster_path" alt="">
                 <h4>{{movie.title}}</h4>
                 <h5>{{movie.original_title}}</h5>
-                <div v-if="movie.original_language == 'en'">
-                    <img class="w-20" src="../assets/images/gb.svg" alt="">
+                <div class="lang-card" v-if="movie.original_language == 'en'">
+                    <img  class="w-20" src="../assets/images/gb.svg" alt="">
                 </div>
-                <div v-else-if="movie.original_language == 'it'">
+                <div class="lang-card" v-else-if="movie.original_language == 'it'">
                     <img class="w-20" src="../assets/images/it.svg" alt="">
                 </div>
-                <h5 v-else>{{movie.original_language}}</h5>
+                <h5 class="lang-card" v-else>{{movie.original_language}}</h5>
                 <h5>{{convertRating(movie.vote_average)}}</h5>
                 <img src="" alt="">
-            </li>
-        </ul>
+            </div>
+        </div>
+    </div>
     </div>
     
-    <div v-if="!movies.length == 0" id="tvseries-container">
-        <h1>TV SERIES</h1>
-        <ul class="list" v-for="(tvseries, index) in tvSeries" :key="index">
-            <li>
+    
+    <div v-if="!movies.length == 0" class="wrap">
+        <h1 class="section-title">TV SERIES</h1>
+        <div  id="tvseries-container">
+        
+        <div class="list" v-for="(tvseries, index) in tvSeries" :key="index">
+            <div class="card">
                 <div class="no-poster" v-if="tvseries.poster_path == null">
-                    <img src="../assets/images/noposter.svg" alt="">
+                    <img class="no-poster-img" src="../assets/images/noposter.svg" alt="">
                 </div>
-                <img v-else :src="posterURL + tvseries.poster_path" alt="">
+                <img class="poster-img" v-else :src="posterURL + tvseries.poster_path" alt="">
                 <h4>{{tvseries.title}}</h4>
                 <h5>{{tvseries.original_name}}</h5>
-                <div v-if="tvseries.original_language == 'en'">
+                <div class="lang-card" v-if="tvseries.original_language == 'en'">
                     <img class="w-20" src="../assets/images/gb.svg" alt="">
                 </div>
-                <div v-else-if="tvseries.original_language == 'it'">
+                <div class="lang-card" v-else-if="tvseries.original_language == 'it'">
                     <img class="w-20" src="../assets/images/it.svg" alt="">
                 </div>
-                <h5 v-else>{{tvseries.original_language}}</h5>
+                <h5 class="lang-card" v-else>{{tvseries.original_language}}</h5>
                 <h5>{{convertRating(tvseries.vote_average)}}</h5>
                 <img src="" alt="">
-            </li>
-        </ul>
+            </div>
+        </div>
     </div>
+    </div>
+    
     
 
   </main>
 </template>
 
 <script>
-
-
 
 export default {
 
@@ -96,9 +100,8 @@ export default {
         width: 20px;
     }
 
-    ul {
+    .list {
         min-width: 342px;
-        list-style: none;
     }
 
     #movies-container, #tvseries-container {
@@ -108,22 +111,44 @@ export default {
         justify-content: center;
         align-items: center;
 
-        li {
-            width: 100%;
+        .card {
+            width: 342px;
+            height: 800px;
+            padding: 10px;
+
+            /*.poster-img {
+                height: 513px;
+            }*/
+
+            .no-poster-img {
+                height: 513px;
+            }
+            
+            .lang-card {
+                height: 30px;
+            }
+
+            .no-poster {
+                width: 342px;
+                height: 513px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                background-color: #ccc;
+
+                img {
+                    height: 60%;
+                }
+    }
         }
     }
 
-    .no-poster {
-        width: 100%;
-        height: 513px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        background-color: #ccc;
+    
+    
 
-        img {
-            width: 60%;
-        }
+    .section-title {
+        text-align: center;
+        margin-bottom: 20px;
     }
 
     
