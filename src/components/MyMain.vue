@@ -2,9 +2,8 @@
   <main>
     <div v-if="!movies.length == 0" class="wrap">
         <h1 class="section-title">MOVIES</h1>
-        <div  id="movies-container">
-        <div class="list" v-for="(movie, index) in movies" :key="index">
-            <div class="card">
+        <div id="movies-container">
+            <div class="card" v-for="(movie, index) in movies" :key="index">
                 <div class="no-poster" v-if="movie.poster_path == null">
                     <img class="no-poster-img" src="../assets/images/noposter.svg" alt="">
                 </div>
@@ -23,15 +22,12 @@
             </div>
         </div>
     </div>
-    </div>
     
     
     <div v-if="!movies.length == 0" class="wrap">
         <h1 class="section-title">TV SERIES</h1>
-        <div  id="tvseries-container">
-        
-        <div class="list" v-for="(tvseries, index) in tvSeries" :key="index">
-            <div class="card">
+        <div id="tvseries-container">
+            <div class="card" v-for="(tvseries, index) in tvSeries" :key="index">
                 <div class="no-poster" v-if="tvseries.poster_path == null">
                     <img class="no-poster-img" src="../assets/images/noposter.svg" alt="">
                 </div>
@@ -49,7 +45,6 @@
                 <img src="" alt="">
             </div>
         </div>
-    </div>
     </div>
     
     
@@ -98,10 +93,6 @@ export default {
 
     .w-20 {
         width: 20px;
-    }
-
-    .list {
-        min-width: 342px;
     }
 
     #movies-container, #tvseries-container {
