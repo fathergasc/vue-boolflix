@@ -136,6 +136,7 @@ export default {
 
 <style lang="scss">
 @import "~@fortawesome/fontawesome-free/css/all.css";
+@import '@/styles/vars.scss';
 
 .no-poster {
   position: relative;
@@ -152,7 +153,39 @@ export default {
 .flip-card {
   background-color: transparent;
   perspective: 1000px;
+  width: $card-width;
+  height: $card-height;
+  margin: 10px;
+  .poster-img {
+    width: 100%;
+    height: 100%;
+  }
+
+  .no-poster-img {
+    width: $card-width;
+    height: $card-height;
+  }
+
+  .lang-card {
+    height: 30px;
+    display: block;
+    text-transform: uppercase;
+  }
+
+  .no-poster {
+    width: $card-width;
+    height: $card-height;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #ccc;
+
+    img {
+      height: 40%;
+    }
+  }
 }
+
 .flip-card-inner {
   position: relative;
   width: 100%;
@@ -181,7 +214,6 @@ export default {
 }
 
 .flip-card-back {
-  box-sizing: border-box;
   padding: 15px;
   background-color: black;
   color: white;
@@ -189,9 +221,15 @@ export default {
   overflow: auto;
 
   p {
+    padding-top: 10px;
     font-size: 1rem;
     text-align: left;
   }
+
+  i {
+  color: gold;
+  font-size: 20px;
+}
 }
 
 .title {

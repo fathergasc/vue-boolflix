@@ -52,6 +52,8 @@ export default {
 
 <style lang="scss">
 
-@import './styles/common.scss'
+@import './styles/common.scss';
+@import './styles/vars.scss';
+@import "~@fortawesome/fontawesome-free/css/all.css";
 
 </style>
