@@ -77,6 +77,7 @@ export default {
 }
 
 .section-title {
+  margin-top: 20px;
   text-align: center;
   margin-bottom: 20px;
   color: white;

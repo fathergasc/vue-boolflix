@@ -65,70 +65,48 @@ export default {
     convertLangToFlag(lang) {
       if (lang == "en") {
         return "gb";
-      } else if (lang == "it") {
-        return "it";
-      } else if (lang == "es") {
-        return "es";
-      } else if (lang == "fr") {
-        return "fr";
-      } else if (lang == "de") {
-        return "de";
-      } else if (lang == "pt") {
-        return "pt";
-      } else if (lang == "ru") {
-        return "ru";
       } else if (lang == "ja") {
         return "jp";
       } else if (lang == "ko") {
         return "kr";
       } else if (lang == "zh") {
         return "cn";
-      } else if (lang == "hu") {
-        return "hu";
-      } else if (lang == "pl") {
-        return "pl";
-      } else if (lang == "nl") {
-        return "nl";
       } else if (lang == "sv") {
         return "se";
-      } else if (lang == "no") {
-        return "no";
       } else if (lang == "da") {
         return "dk";
-      } else if (lang == "fi") {
-        return "fi";
-      } else if (lang == "tr") {
-        return "tr";
       } else if (lang == "el") {
         return "gr";
-      } else if (lang == "bg") {
-        return "bg";
       } else if (lang == "cs") {
         return "cz";
-      } else if (lang == "sk") {
-        return "sk";
       } else if (lang == "sl") {
         return "si";
-      } else if (lang == "hr") {
-        return "hr";
+      } else {
+        return lang;
       }
     },
     convertRating(rating) {
-      rating = Math.round(rating) / 2;
       let starsRating = [];
-      for (let i = rating; i >= 1; i--) {
-        if (i == 1.5) {
-          starsRating.push('<i class="fa-solid fa-star"></i>');
-          starsRating.push('<i class="fa-regular fa-star-half-stroke"></i>');
-        } else {
-          starsRating.push('<i class="fa-solid fa-star"></i>');
+      if (rating == 0) {
+        starsRating.push("Senza voto");
+        return starsRating.join("");
+      } else {
+        rating = Math.round(rating) / 2;
+
+        for (let i = rating; i >= 1; i--) {
+          if (i == 1.5) {
+            starsRating.push('<i class="fa-solid fa-star"></i>');
+            starsRating.push('<i class="fa-regular fa-star-half-stroke"></i>');
+          } else {
+            starsRating.push('<i class="fa-solid fa-star"></i>');
+          }
         }
+        for (let i = 5 - rating; i >= 1; i--) {
+          starsRating.push('<i class="fa-regular fa-star"></i>');
+        }
+        starsRating = starsRating.join("");
+        return starsRating;
       }
-      for (let i = 5 - rating; i >= 1; i--) {
-        starsRating.push('<i class="fa-regular fa-star"></i>');
-      }
-      starsRating = starsRating.join("");
-      return starsRating;
     },
   },
 };
@@ -136,7 +114,7 @@ export default {
 
 <style lang="scss">
 @import "~@fortawesome/fontawesome-free/css/all.css";
-@import '@/styles/vars.scss';
+@import "@/styles/vars.scss";
 
 .no-poster {
   position: relative;
@@ -159,6 +137,10 @@ export default {
   .poster-img {
     width: 100%;
     height: 100%;
+  }
+
+  span {
+    font-weight: bold;
   }
 
   .no-poster-img {
@@ -227,9 +209,9 @@ export default {
   }
 
   i {
-  color: gold;
-  font-size: 20px;
-}
+    color: gold;
+    font-size: 20px;
+  }
 }
 
 .title {
