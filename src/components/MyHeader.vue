@@ -51,10 +51,11 @@ export default {
 
         input {
             margin : 0 10px;
+            padding: 5px;
         }
 
         button {
-            padding: 5px;
+            padding: 7px 10px;
             background-color: red;
             border-radius: 8px;
             font-weight: bold;

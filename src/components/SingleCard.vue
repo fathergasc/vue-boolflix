@@ -27,7 +27,7 @@
             cardData.hasOwnProperty("title") ? cardData.title : cardData.name
           }}
         </div>
-        <div class="original-title">
+        <div v-if="cardData.title !== cardData.original_title || cardData.name !== cardData.original_name" class="original-title">
           <b>Titolo originale: </b
           >{{
             cardData.hasOwnProperty("original_title")
@@ -39,7 +39,6 @@
           <img
             class="w-30"
             :src="flagEndpoint + convertLangToFlag(cardData.original_language)"
-            alt=""
           />
         </div>
         <span v-html="convertRating(cardData.vote_average)"></span>
@@ -129,11 +128,12 @@ export default {
 }
 
 .flip-card {
+    margin-top: 40px;
   background-color: transparent;
   perspective: 1000px;
   width: $card-width;
   height: $card-height;
-  margin: 10px;
+  margin: 20px;
   .poster-img {
     width: 100%;
     height: 100%;
@@ -149,9 +149,12 @@ export default {
   }
 
   .lang-card {
+    margin: 10px 0;
     height: 30px;
     display: block;
     text-transform: uppercase;
+    display: flex;
+    align-items: center;
   }
 
   .no-poster {
@@ -188,6 +191,7 @@ export default {
   height: 100%;
   -webkit-backface-visibility: hidden;
   backface-visibility: hidden;
+  box-shadow: 10px 12px 10px -2px rgb(26, 25, 25);
 }
 
 .flip-card-front {
