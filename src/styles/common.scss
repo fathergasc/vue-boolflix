@@ -1,5 +1,17 @@
 
 
+body {
+    background-color: #434343;
+}
+
+main {
+    padding-top: 80px;
+}
+
+.w-30 {
+    width: 30px;
+}
+
 // Scrollbar
 ::-webkit-scrollbar { width: 8px; height: 3px;}
 ::-webkit-scrollbar-button {  background-color: rgb(163, 161, 161); }

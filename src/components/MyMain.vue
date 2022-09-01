@@ -66,18 +66,6 @@ export default {
 
 @import '~@fortawesome/fontawesome-free/css/all.css';
 
-    body {
-        background-color: #434343;
-    }
-
-    main {
-        padding-top: 80px;
-    }
-
-    .w-30 {
-        width: 30px;
-    }
-
     #movies-container, #tvseries-container {
         max-width: 1450px;
         margin: 0 auto;
