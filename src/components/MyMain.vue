@@ -43,23 +43,6 @@ export default {
     movies: Array,
     tvSeries: Array,
   },
-  methods: {
-    convertRating(rating) {
-      rating = Math.round(rating) / 2;
-      let starsRating = [];
-
-      for (var i = rating; i >= 1; i--)
-        starsRating.push('<i class="fa-solid fa-star"></i>');
-      if (i == 0.5)
-        starsRating.push('<i class="fa-regular fa-star-half-stroke"></i>');
-
-      for (let i = 5 - rating; i >= 1; i--)
-        starsRating.push('<i class="fa-regular fa-star"></i>');
-
-      starsRating = starsRating.join("");
-      return starsRating;
-    },
-  },
 };
 </script>
 
