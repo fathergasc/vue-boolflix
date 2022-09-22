@@ -63,4 +63,10 @@ export default {
         }
     }
  }
+
+ @media screen and (max-width: 992px) {
+  header span {
+    display: none;
+  }
+}
 </style>
